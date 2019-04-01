@@ -4,22 +4,22 @@ int main(){
   int f, c;
   float promedioA = 0, promedioU = 0;
 
-  printf("Introduce el numero de filas: ");
+  printf("Introduce el numero de alumnos: ");
   scanf("%d", &f);
 
-  printf("Introduce el numero de columnas: ");
+  printf("Introduce el numero de examenes: ");
   scanf("%d", &c);
 
   int datos[f][c];
 
   for (int count = 0; count < f; count++){
     for (int count2 = 0; count2 < c; count2 ++){
-      printf("Introduce el valor en la fila %d, en   la columna %d: ", count, count2);
+      printf("Introduce el valor del alumno %d, en el examen %d: ", count + 1, count2 + 1);
       scanf("%d", &datos[count][count2]);
     }
   }
 
-  printf("Los valores introducidos fueron: \n");
+  printf("\nLos valores introducidos fueron: \n");
   for (int count = 0; count < f; count++){
     for (int count2 = 0; count2 < c; count2 ++)
       printf("%d ", datos[count][count2]);
@@ -37,7 +37,6 @@ int main(){
     printf("El promedio del alumno %d fue: %.2f", count + 1, promedioA);
     printf("\n");
     promedioA = 0;
-
   }
 
   for (int count = 0; count < c; count++){

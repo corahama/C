@@ -2,8 +2,8 @@
 #include <math.h>
 
 int main(){
-    double factorial;
-    double x = 5, sin = 0, num, mult;
+    int x = 5;
+    double sin = 0, num, mult, factorial;
 
     for (int count = 0; count < 10; count++){
         factorial = 1.0;
@@ -22,5 +22,5 @@ int main(){
 
     }
 
-    printf("El seno es %f", sin);
+    printf("El seno de %d es %f", x, sin);
 }

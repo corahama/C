@@ -2,8 +2,8 @@
 #include <math.h>
 
 int main(){
-    double factorial;
-    double x = 5, sin = 0, num, mult;
+    int x = 5;
+    double factorial, sin = 0, num, mult;
 
     for (int count = 0; count < 10; count++){
         factorial = 1.0;
@@ -22,5 +22,5 @@ int main(){
 
     }
 
-    printf("El coseno es %f", sin);
+    printf("El coseno de %d es %f", x, sin);
 }

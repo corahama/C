@@ -6,10 +6,10 @@ bool test(int num, int array[1], int size);
 
 int main() {
     int min, max, max2, countArray = 0;
-    int array[10] = {4, 4, 6, 1, 0, 3, 6, 9, 9, 0};
-    int array2[10];
-    int array3[10];
+    int array[] = {4, 4, 6, 1, 0, 3, 6, 9, 9, 0};
     int size = size = sizeof(array)/sizeof(int);
+    int array2[size];
+    int array3[size];
 
     printf("Matriz inicial: ");
     for (int count = 0; count < size; count ++){
@@ -30,7 +30,7 @@ int main() {
         min = array[count];
     }
 
-    // Este for es para ordenar los numeros dentro de la matriz
+    // Este for es para ordenar los numeros dentro de la nueva matriz
     for (int count = 0; count < size; count++){
         max2 = max;
         for (int count2 = 0; count2 < size; count2++){

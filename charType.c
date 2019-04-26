@@ -2,7 +2,7 @@
 #include<stdio.h>
 
 int canPrintIt(char ch);
-void printLetters(char arg[]);
+void printLetters(char argv[]);
 
 void printArguments(int argc, char *argv[]) {
 
@@ -11,9 +11,9 @@ void printArguments(int argc, char *argv[]) {
 
 }
 
-void printLetters(char arg[]){
-  for (int count = 0; arg[count] != '\0'; count++){
-    char ch = arg[count];
+void printLetters(char argv[]){
+  for (int count = 0; argv[count] != '\0'; count++){
+    char ch = argv[count];
     if (canPrintIt(ch))
       printf("'%c' == %d ", ch, ch);
   }

@@ -22,6 +22,7 @@ int main(int argc, char *argv[]){
   A->data[5] = 6.7;
   printmat(A);
 
+  printf("\n");
   Matrix *B = createMatrix(2, 3);
   B->data[0] = 5.5;
   B->data[1] = 6.6;
@@ -33,6 +34,7 @@ int main(int argc, char *argv[]){
 
   Matrix *C = createMatrix(3, 3);
   matrixmult(A, B, C);
+  printf("\n");
   printmat(C);
 
   destroyMatrix(A);
@@ -41,27 +43,46 @@ int main(int argc, char *argv[]){
   return 0;
 }
 
-// your code goes below...
+Matrix *createMatrix(int nrows, int ncols){
+  Matrix *M = malloc(sizeof(Matrix));
+  M->data = calloc(nrows*ncols, sizeof(double));
+  M->nrows = nrows;
+  M->ncols = ncols;
 
-
-Matrix *createMatrix(int nrows, int ncols)
-{
-  // fill in the code here
+  return M;
 }
 
-void destroyMatrix(Matrix *M)
-{
-  // fill in the code here
+void destroyMatrix(Matrix *M){
+  free(M);
 }
 
-void printmat(Matrix *M)
-{
-  // fill in the code here
-  printf("so far printmat does nothing\n");
+void printmat(Matrix *M){
+  for (int count = 0; count < M->ncols*M->nrows; count++){
+    printf("%.2f ", M->data[count]);
+    if ((count+1)%M->ncols == 0)
+      printf("\n");
+  }
 }
 
-void matrixmult(Matrix *A, Matrix *B, Matrix *C)
-{
-  // fill in the code here
-  printf("so far matrixmult does nothing\n");
+void matrixmult(Matrix *A, Matrix *B, Matrix *C){
+  if (A->ncols != B->nrows)
+    perror("error: ncols of A does not equal nrows of B\n");
+
+  for (int i = 0; i < C->ncols*C->nrows; i++){
+    for (int j = (i/C->ncols)*A->ncols; j < ((i/C->ncols)*A->ncols)+A->ncols; j++){
+      C->data[i] += A->data[j]*B->data[(i%C->ncols)+((j%A->ncols)*B->ncols)];
+    }
+  }
 }
+
+// int i, j, k;
+// double count;
+// for (i=0; i<A->nrows; i++) {
+//   for (j=0; j<B->ncols; j++) {
+//     count = 0.0;
+//     for (k=0; k<A->ncols; k++) {
+// 	    count += A->data[i*A->ncols + k] * B->data[k*B->ncols + j];
+// 	  }
+// 	  C->data[i*A->nrows + j] = count;
+//   }
+// }

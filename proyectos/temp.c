@@ -2,12 +2,11 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
-  char name1[] = "fer";
-  char name2[] = "lau";
+  char name[] = "fernando";
+  char name1[] = "fernando";
 
-  strcpy(name1, name2);
-
-  printf("%s\n", name1);
+  if(!strcmp(name, name1))
+    printf("%s\n", "True");
 
   return 0;
 }

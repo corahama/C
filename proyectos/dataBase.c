@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+ 
 typedef struct {
   char name[30];
   char lastname[30];
@@ -51,6 +51,7 @@ int main(int argc, char *argv[]) {
 
         fwrite(&cliente, sizeof(cliente), 1, fp);
         break;
+
         // ELIMINAR UN NOMBRE Y PELICULA
         case 2:;
         char delete[40];
@@ -71,8 +72,8 @@ int main(int argc, char *argv[]) {
         rename("db_temp.bin", "db.bin");
         fclose(fp_rename);
         fp = fopen("db.bin", "ab+");
-
         break;
+
         // MODIFICAR UN CLIENTE
         case 3:;
         char rewrite[40];
@@ -92,6 +93,7 @@ int main(int argc, char *argv[]) {
         client newClient;
         FILE *fp_temp = fopen("db_temp.bin", "wb+");
         fseek(fp, 0, SEEK_SET);
+
         while (fread(&newClient, sizeof(client), 1, fp)) {
           if (strcmp(newClient.name, rewrite) == 0) {
             strcpy(newClient.name, modify.name);
@@ -107,8 +109,8 @@ int main(int argc, char *argv[]) {
         remove("db.bin");
         rename("db_temp.bin", "db.bin");
         fp = fopen("db.bin", "ab+");
-
         break;
+
         // LEER EL ARCHIVO
         case 4:;
         fseek(fp, 0, SEEK_SET);
